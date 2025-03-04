@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Redirect</title>
-    <script type="text/javascript">
-        // Redirect immediately when the page loads
-       window.onload = function() {
-           // window.location.href = "https://link.xinghe.me/pvodic2f"; // Change this to the link you want
-          
-            window.location.href = "https://t.me/visalearning";
-       
-       };
+    <title>Redirect</title>
+    <script>
+        // List of random links
+        const randomLinks = [
+            "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.bsdkface.com%2FVEE3B4%3Futm_medium%3Dpaid%26utm_source%3Dig%26utm_id%3D120219406664530260%26utm_content%3D120219408538050260%26utm_term%3D120219408538150260%26utm_campaign%3D120219406664530260%26fbclid%3DPAY2xjawIOZYNleHRuA2FlbQIxMAABpp8DNI_LrwJvfNFQbaI5CTXbzYOC2n3YWrBLiRcqVxHAT3ZXd--VRe2OXQ_aem_cMsuZxPHV-rIGphOykHh7A&h=AT2CL0YVIc_uj3j7lQPZ25PZHgCyi823eucsrmKyzS93fv0cLPrtlI2fOy3_HLDIdGHJ76ftTSKZRUWMmLGahwARQDoEN_OSYI8S9OBC0a3Y3EdpLbfIIg", // Replace with your first link
+            "https://t.me/visalearning", // Replace with your second link
+            "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.bsdkface.com%2FVEE3B4%3Futm_medium%3Dpaid%26utm_source%3Dig%26utm_id%3D120219406664530260%26utm_content%3D120219408538050260%26utm_term%3D120219408538150260%26utm_campaign%3D120219406664530260%26fbclid%3DPAY2xjawIOZYNleHRuA2FlbQIxMAABpp8DNI_LrwJvfNFQbaI5CTXbzYOC2n3YWrBLiRcqVxHAT3ZXd--VRe2OXQ_aem_cMsuZxPHV-rIGphOykHh7A&h=AT2CL0YVIc_uj3j7lQPZ25PZHgCyi823eucsrmKyzS93fv0cLPrtlI2fOy3_HLDIdGHJ76ftTSKZRUWMmLGahwARQDoEN_OSYI8S9OBC0a3Y3EdpLbfIIg"  // Replace with your third link
+        ];
 
-         
+        // Function to select a random link and redirect
+        function randomRedirect() {
+            const randomIndex = Math.floor(Math.random() * randomLinks.length); // Randomly select an index
+            const selectedLink = randomLinks[randomIndex]; // Get the link based on the random index
+            window.location.href = selectedLink; // Redirect to the selected link
+        }
+
+        // Call the randomRedirect function on page load
+        window.onload = randomRedirect;
     </script>
 </head>
 <body>
-    <!-- No content in the body -->
+    <!-- Body is empty; it will redirect automatically on page load -->
 </body>
 </html>
