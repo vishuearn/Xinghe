@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +14,7 @@
       justify-content: center;
       height: 100vh;
       text-align: center;
+      flex-direction: column;
     }
   </style>
 </head>
@@ -26,14 +26,20 @@
   <script>
     // WhatsApp numbers
     const numbers = [
-      "+919214031322",
-      "+919721272419",
-      "+918309612928",
-      "+917094878953"
+      "+918726991576",
+      "+917694049628",
+      "+919872736759",
+      "+918239475485",
+      "+917205353402",
+      "+917706967512",
+      "+917054692835",
+      "+917448200807"
     ];
 
     // Pre-filled message
-    const message = encodeURIComponent(" ");
+    const message = encodeURIComponent(
+      ""
+    );
 
     // Select random number
     const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
@@ -41,6 +47,8 @@
     // Redirect to WhatsApp after 2 seconds
     setTimeout(() => {
       window.location.href = `https://wa.me/${randomNumber}?text=${message}`;
+      // window.location.href = `https://t.me/+Q95coR2CNEE0ZmQ1`;
+
     }, 2000);
   </script>
 </body>
