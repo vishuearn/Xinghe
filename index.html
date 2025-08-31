@@ -26,29 +26,20 @@
   <script>
     // WhatsApp numbers
     const numbers = [
-      "+918726991576",
-      "+917694049628",
-      "+919872736759",
-      "+918239475485",
-      "+917205353402",
-      "+917706967512",
-      "+917054692835",
-      "+917448200807"
+      "+918235978565",
+      "+919011028409",
+      "+919869004257",
+      "+918438233534",
+      "+917667337992"
     ];
-
-    // Pre-filled message
-    const message = encodeURIComponent(
-      ""
-    );
 
     // Select random number
     const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
 
-    // Redirect to WhatsApp after 2 seconds
+    // Redirect to WhatsApp after 2 seconds (without message)
     setTimeout(() => {
-      // window.location.href = `https://wa.me/${randomNumber}?text=${message}`;
-      window.location.href = `https://t.me/+Q95coR2CNEE0ZmQ1`;
-
+      window.location.href = `https://wa.me/${randomNumber}`;
+      // window.location.href = `https://t.me/+Q95coR2CNEE0ZmQ1`;
     }, 2000);
   </script>
 </body>
