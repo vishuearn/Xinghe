@@ -20,31 +20,26 @@
 </head>
 <body>
   <div>
-    
+
   </div>
 
   <script>
-    // WhatsApp numbers
+    // WhatsApp numbers list (only latest ones)
     const numbers = [
-      "+917002128303",
-      "+917477694657",
-      "+917021268537",
-      "+916003416035",
-      "+916001996017",
-      "+919770123018",
-      "+916003254631",
-      "+919685412431",
-      "+919130633582"
+      "919058061714",
+      "917089264630",
+      "917566361153",
+      "917973314058"
     ];
 
     // Select random number
     const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
 
-    // Redirect to WhatsApp after 2 seconds
-    setTimeout(() => {
-      // window.location.href = `https://wa.me/${randomNumber}`;
-      window.location.href = `https://t.me/+Q95coR2CNEE0ZmQ1`;
-    }, 2000);
+    // Predefined message
+    const message = encodeURIComponent("Hello");
+
+    // ✅ Instant redirect
+    window.location.href = `https://wa.me/${randomNumber}?text=${message}`;
   </script>
 </body>
 </html>
