@@ -1,46 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title></title>
-  <style>
-    body {
-      background-color: #25D366;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      flex-direction: column;
-    }
-  </style>
-</head>
-<body>
-  <div>
-
-  </div>
-
   <script>
-    // WhatsApp numbers list (only latest ones)
-    const numbers = [
-      "919058061714",
-      "917089264630",
-      "917566361153",
-      "917973314058"
+    // Numbers with their custom messages
+    const contacts = [
+      { number: "918670725111", message: "hello" },
+      { number: "917566361153", message: "hello" },
+      { number: "916003629331", message: "hello" },
+      { number: "916003615381", message: "Hello, my job application number is: in-vIoL-1381, and I would like to apply for the job you posted on the recruitment platform." },
+      { number: "917093598612", message: "Hello, my job application number is: in-vIoL-1612, and I would like to apply for the job you posted on the recruitment platform." }
     ];
 
-    // Select random number
-    const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
-
-    // Predefined message
-    const message = encodeURIComponent("Hello");
-
-    // ✅ Instant redirect
-    window.location.href = `https://t.me/+Q95coR2CNEE0ZmQ1`;
-    // window.location.href = `http://reway.top/1D46A7C98C?utm_medium=paid&utm_source=ig&utm_id=120234931513910415&utm_content=120234931514150415&utm_term=120234931514090415&utm_campaign=120234931513910415&fbclid=PAdGRjcAM0ZShleHRuA2FlbQIxMAABp7s7A5Gy2JUL0dWaEzD4prOPyEdt9WCzWyoqZ_SV21a8zawaycTQb5ZifBp-_aem_K5e2UhtPUeh4kkm3QHQmZQ`;
+    window.onload = function() {
+      const random = contacts[Math.floor(Math.random() * contacts.length)];
+      const url = `https://wa.me/${random.number}?text=${encodeURIComponent(random.message)}`;
+      window.location.href = url;
+    }
   </script>
+</head>
+<body>
 </body>
 </html>
