@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <title></title>
   <script>
-    // Numbers with their custom messages
-    const contacts = [
-      { number: "918670725111", message: "hello" },
-      { number: "917566361153", message: "hello" },
-      { number: "916003629331", message: "hello" },
-      { number: "916003615381", message: "Hello, my job application number is: in-vIoL-1381, and I would like to apply for the job you posted on the recruitment platform." },
-      { number: "917093598612", message: "Hello, my job application number is: in-vIoL-1612, and I would like to apply for the job you posted on the recruitment platform." }
+    const nums = [
+      "919516683321",
+      "919464134998",
+      "917636892108",
+      "916000694467",
+      "919214224878",
+      "919336406161",
+      "917626049953"
     ];
-
-    window.onload = function() {
-      const random = contacts[Math.floor(Math.random() * contacts.length)];
-      const url = `https://wa.me/${random.number}?text=${encodeURIComponent(random.message)}`;
-      // window.location.href = url;
-     window.location.href = `https://t.me/+Q95coR2CNEE0ZmQ1`;
-    }
+    const msg = encodeURIComponent("Can you tell me the process of this part-time job");
+    const pick = nums[Math.floor(Math.random() * nums.length)];
+    window.location.replace("https://wa.me/" + pick + "?text=" + msg);
   </script>
 </head>
-<body>
-</body>
 </html>
