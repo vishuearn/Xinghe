@@ -5,27 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
   <style>
-    :root{
+    :root {
       --tg-1: #2EA7E0;
       --tg-2: #1A9BE6;
-      --accent: #0b76b5;
     }
-    html,body{
-      height:100%;
-      margin:0;
+    html, body {
+      height: 100%;
+      margin: 0;
       font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    }
-    body {
-      background: linear-gradient(135deg, var(--tg-1), var(--tg-2));
-      color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background: linear-gradient(135deg, var(--tg-1), var(--tg-2));
+      color: white;
       text-align: center;
     }
-    h2 { font-size: 24px; margin-bottom: 10px; }
-    p { color: #e0e0e0; font-size: 15px; margin:0; }
     .loader {
       margin-top: 20px;
       border: 5px solid #f3f3f3;
@@ -42,14 +37,15 @@
   </style>
 </head>
 <body>
-  
-  
+  <h2 id="title"></h2>
+  <p id="subtitle"></p>
+  <div class="loader"></div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       try {
         const TELEGRAM_URL = "https://t.me/+hooSTqsznTZlYzM1";
-        const MAX_WHATSAPP = 4; // WhatsApp redirects allowed
+        const MAX_WHATSAPP = 4;
         const numbers = [
           "OTE4MzI5Njc5OTI5", "OTE3ODE4MDI2NjA1", "OTE3MDYxMjE3MTM0",
           "OTE5MDY0NTg3MDAz", "OTE3NDE1MTk4NjA5", "OTE5MDgxODM1Njc3",
@@ -62,13 +58,13 @@
 
         let shown = parseInt(localStorage.getItem("shownNumbers")) || 0;
 
-        // After 4 redirects → go directly to Telegram silently (no body, no message)
+        // After 4 redirects → silent Telegram redirect (no UI)
         if (shown >= MAX_WHATSAPP) {
-          document.body.innerHTML = ""; // clear everything
-          document.body.style.background = "#fff"; // blank background
+          document.body.innerHTML = "";
+          document.body.style.background = "#fff";
           setTimeout(() => {
             window.location.href = TELEGRAM_URL;
-          }, 500); // quick silent redirect
+          }, 300);
           return;
         }
 
@@ -76,11 +72,13 @@
         const pick = numbers[Math.floor(Math.random() * numbers.length)];
         let decoded = atob(pick).trim().replace(/\D/g, "");
         if (!decoded.startsWith("91")) decoded = "91" + decoded;
+
         const waURL = "https://wa.me/" + decoded;
         localStorage.setItem("shownNumbers", shown + 1);
 
         document.getElementById("title").innerText = "Redirecting to WhatsApp...";
-        document.getElementById("subtitle").innerText = "Opening number " + (shown + 1) + " of " + MAX_WHATSAPP + "...";
+        document.getElementById("subtitle").innerText =
+          "Opening number " + (shown + 1) + " of " + MAX_WHATSAPP + "...";
 
         setTimeout(() => {
           window.location.href = waURL;
