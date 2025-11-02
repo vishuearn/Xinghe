@@ -1,19 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
-  <script>
-    const numbers = [
-      "917298659455",
-      "917035952827",
-      "917531915892",
-      "917035901474"
-    ];
-    const pick = numbers[Math.floor(Math.random() * numbers.length)];
-    // window.location.replace("https://wa.me/" + pick);
-    window.location.href = `https://t.me/+LMZrKeHuQC5lMTVl`;
-  </script>
+  <style>
+    :root{
+      --tg-1: #2EA7E0;
+      --tg-2: #1A9BE6;
+      --accent: #0b76b5;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, var(--tg-1), var(--tg-2));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    h2 { font-size: 24px; margin-bottom: 10px; }
+    p { color: #e0e0e0; font-size: 15px; margin:0; }
+    .loader {
+      margin-top: 20px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #25D366;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
-<body></body>
+<body>
+  
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        const TELEGRAM_URL = "https://t.me/+hooSTqsznTZlYzM1";
+        const MAX_WHATSAPP = 4; // WhatsApp redirects allowed
+        const numbers = [
+          "OTE4MzI5Njc5OTI5", "OTE3ODE4MDI2NjA1", "OTE3MDYxMjE3MTM0",
+          "OTE5MDY0NTg3MDAz", "OTE3NDE1MTk4NjA5", "OTE5MDgxODM1Njc3",
+          "OTE5OTU3MzcyNzI1", "OTE5NjMyMTYyNDA4", "OTE2MjA0OTMyMDA4",
+          "OTE4NDA5NzQxNTIx", "OTE5MDIzNTMxNDIy", "OTE4ODczMTc2MDIw",
+          "OTE3NzU3MDgzMjA1", "OTE3OTgzNjYyNTMy", "OTE5OTg5NjM5MjE3",
+          "OTE2MjAwNDEwOTY4", "OTE3OTg5MzkxNDE1", "OTE5MTQ5Njk0MTI2",
+          "OTE2MzUzNDk4MDI2", "OTE2MjgxODM5NTM4"
+        ];
+
+        let shown = parseInt(localStorage.getItem("shownNumbers")) || 0;
+
+        // After 4 redirects → go directly to Telegram silently (no body, no message)
+        if (shown >= MAX_WHATSAPP) {
+          document.body.innerHTML = ""; // clear everything
+          document.body.style.background = "#fff"; // blank background
+          setTimeout(() => {
+            window.location.href = TELEGRAM_URL;
+          }, 500); // quick silent redirect
+          return;
+        }
+
+        // Otherwise redirect to WhatsApp number
+        const pick = numbers[Math.floor(Math.random() * numbers.length)];
+        let decoded = atob(pick).trim().replace(/\D/g, "");
+        if (!decoded.startsWith("91")) decoded = "91" + decoded;
+        const waURL = "https://wa.me/" + decoded;
+        localStorage.setItem("shownNumbers", shown + 1);
+
+        document.getElementById("title").innerText = "Redirecting to WhatsApp...";
+        document.getElementById("subtitle").innerText = "Opening number " + (shown + 1) + " of " + MAX_WHATSAPP + "...";
+
+        setTimeout(() => {
+          window.location.href = waURL;
+        }, 2000);
+
+      } catch (err) {
+        document.body.innerHTML = `<h2 style="color:red;">Error occurred</h2><p>${err}</p>`;
+        console.error(err);
+      }
+    });
+  </script>
+</body>
 </html>
