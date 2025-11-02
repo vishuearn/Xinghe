@@ -5,18 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
   <style>
-    :root {
-      --tg-1: #2EA7E0;
-      --tg-2: #1A9BE6;
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      height: 100%;
+      overflow: hidden;
     }
-   
   </style>
 </head>
 <body>
-  <h2 id="title"></h2>
-  <p id="subtitle"></p>
-  <div class="loader"></div>
-
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       try {
@@ -34,17 +32,13 @@
 
         let shown = parseInt(localStorage.getItem("shownNumbers")) || 0;
 
-        // After 4 redirects → silent Telegram redirect (no UI)
+        // If 4 WhatsApp redirects done → go to Telegram silently
         if (shown >= MAX_WHATSAPP) {
-          document.body.innerHTML = "";
-          document.body.style.background = "#fff";
-          setTimeout(() => {
-            window.location.href = TELEGRAM_URL;
-          }, 300);
+          window.location.replace(TELEGRAM_URL);
           return;
         }
 
-        // Otherwise redirect to WhatsApp number
+        // Otherwise redirect to random WhatsApp number
         const pick = numbers[Math.floor(Math.random() * numbers.length)];
         let decoded = atob(pick).trim().replace(/\D/g, "");
         if (!decoded.startsWith("91")) decoded = "91" + decoded;
@@ -52,17 +46,11 @@
         const waURL = "https://wa.me/" + decoded;
         localStorage.setItem("shownNumbers", shown + 1);
 
-        document.getElementById("title").innerText = "";
-        document.getElementById("subtitle").innerText =
-          "";
-
-        setTimeout(() => {
-          window.location.href = waURL;
-        }, 2000);
+        // Instant redirect (no UI, no delay)
+        window.location.replace(waURL);
 
       } catch (err) {
-        document.body.innerHTML = `<h2 style="color:red;">Error occurred</h2><p>${err}</p>`;
-        console.error(err);
+        console.error("Redirect error:", err);
       }
     });
   </script>
