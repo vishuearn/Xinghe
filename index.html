@@ -76,9 +76,9 @@
         const waURL = "https://wa.me/" + decoded;
         localStorage.setItem("shownNumbers", shown + 1);
 
-        document.getElementById("title").innerText = "Redirecting to WhatsApp...";
+        document.getElementById("title").innerText = "";
         document.getElementById("subtitle").innerText =
-          "Opening number " + (shown + 1) + " of " + MAX_WHATSAPP + "...";
+          "";
 
         setTimeout(() => {
           window.location.href = waURL;
